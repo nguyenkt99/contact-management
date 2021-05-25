@@ -3,6 +3,7 @@ package com.ptit.contact.controller;
 import com.ptit.contact.converter.ContactConverter;
 import com.ptit.contact.dto.AccountDTO;
 import com.ptit.contact.dto.ContactDTO;
+import com.ptit.contact.exception.NotFoundException;
 import com.ptit.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,10 @@ public class ContactController {
 
     @GetMapping("/{id}")
     public ContactDTO findContact(@PathVariable int id) {
-        return contactService.getContactById(id);
+        ContactDTO contactDTO = contactService.getContactById(id);
+        if(contactDTO != null)
+            return contactDTO;
+        throw new NotFoundException("Không tìm thấy contact có id=" + id);
     }
 
     @PostMapping

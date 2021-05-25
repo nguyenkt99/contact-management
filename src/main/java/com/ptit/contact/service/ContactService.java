@@ -53,7 +53,10 @@ public class ContactService {
     }
 
     public ContactDTO getContactById(int id) {
-        return contactConverter.toDTO(contactRepository.findById(id).orElse(null));
+        Contact contact = contactRepository.findById(id).orElse(null);
+        if(contact != null)
+            return contactConverter.toDTO(contact);
+        return null;
     }
 
     public ContactDTO saveContact(ContactDTO contactDTO) {
