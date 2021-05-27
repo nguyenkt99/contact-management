@@ -58,7 +58,7 @@ public class ContactConverter {
         contactDTO.setName(contact.getName());
         contactDTO.setAddress(contact.getAddress());
         contactDTO.setPhoto(contact.getPhoto());
-        contactDTO.setAccountId(contact.getAccount().getId());
+//        contactDTO.setAccountId(contact.getAccount().getId());
 
         List<PhoneDTO> phoneDTOs = new ArrayList<>();
         List<EmailDTO> emailDTOs = new ArrayList<>();

@@ -3,7 +3,6 @@ package com.ptit.contact.entity;
 import com.ptit.contact.dto.AccountDTO;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "accounts")
@@ -18,8 +17,6 @@ public class Account {
     private String email;
     @Column(name = "password")
     private String password;
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<User> users;
 
     public Account() {
     }

@@ -1,19 +1,9 @@
 package com.ptit.contact.dto;
 
-import com.ptit.contact.entity.Email;
-
 public class EmailDTO {
-    private Integer id;
+
     private String emailAddress;
     private String type;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getEmailAddress() {
         return emailAddress;

@@ -14,13 +14,9 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public Account getAccountById(int id) {
-        return accountRepository.findById(id).orElse(null);
+    public Account getAccountByEmail(String email) {
+        return accountRepository.findOne(email);
     }
-
-//    public Account getAccountByEmail(String email) {
-//        return accountRepository.findOne(email);
-//    }
 
     public Account getAccountByEmailPassword(String email, String password) {
         return accountRepository.findOne(email, password);

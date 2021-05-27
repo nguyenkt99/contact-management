@@ -18,9 +18,9 @@ public class EmailConverter {
 
     public EmailDTO toDTO(Email email) {
         EmailDTO emailDTO = new EmailDTO();
-        if(email.getId() != null) {
-            emailDTO.setId(email.getId());
-        }
+//        if(email.getId() != null) {
+//            emailDTO.setId(email.getId());
+//        }
         emailDTO.setEmailAddress(email.getEmailAddress());
         emailDTO.setType(email.getType());
         return emailDTO;

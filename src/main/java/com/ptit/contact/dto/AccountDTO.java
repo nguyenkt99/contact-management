@@ -38,12 +38,4 @@ public class AccountDTO {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "AccountDTO{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

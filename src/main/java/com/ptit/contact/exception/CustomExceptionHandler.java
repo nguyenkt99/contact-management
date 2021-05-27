@@ -13,4 +13,16 @@ public class CustomExceptionHandler {
     public ErrorResponse hanlderNotFoundException(NotFoundException ex, WebRequest req) {
         return new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
+
+    @ExceptionHandler(LoginFailedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse hanlderLoginFailedException(LoginFailedException ex, WebRequest req) {
+        return new ErrorResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
+    }
+
+    @ExceptionHandler(AccountAlreadyExistException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse hanlderAccountAlreadyExistException(AccountAlreadyExistException ex, WebRequest req) {
+        return new ErrorResponse(HttpStatus.FORBIDDEN, ex.getMessage());
+    }
 }

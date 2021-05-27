@@ -2,7 +2,8 @@ package com.ptit.contact.controller;
 
 import com.ptit.contact.dto.AccountDTO;
 import com.ptit.contact.entity.Account;
-import com.ptit.contact.exception.NotFoundException;
+import com.ptit.contact.exception.AccountAlreadyExistException;
+import com.ptit.contact.exception.LoginFailedException;
 import com.ptit.contact.service.AccountService;
 import com.ptit.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,12 @@ public class AccountController {
     @Autowired
     ContactService contactService;
 
-    @PostMapping("/signup")
+    @PostMapping("/register")
     public Account addAccount(@RequestBody Account account) {
-        return accountService.saveAccount(account);
+        Account acc = accountService.getAccountByEmail(account.getEmail());
+        if(acc == null)
+            return accountService.saveAccount(account);
+        throw new AccountAlreadyExistException("Email đã tồn tại");
     }
 
     @PostMapping("/login")
@@ -29,7 +33,7 @@ public class AccountController {
         if(acc != null) {
             return acc.toDTO();
         }
-        throw new NotFoundException("Sai tài khoản mật khẩu");
+        throw new LoginFailedException("Sai tài khoản mật khẩu");
     }
 
 }

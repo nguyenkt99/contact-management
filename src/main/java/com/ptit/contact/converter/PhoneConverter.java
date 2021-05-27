@@ -16,21 +16,11 @@ public class PhoneConverter {
 
     public PhoneDTO toDTO(Phone phone) {
         PhoneDTO phoneDTO = new PhoneDTO();
-        if(phone.getId() != null) {
-            phoneDTO.setId(phone.getId());
-        }
+//        if(phone.getId() != null) {
+//            phoneDTO.setId(phone.getId());
+//        }
         phoneDTO.setPhoneNumber(phone.getPhoneNumber());
         phoneDTO.setType(phone.getType());
         return phoneDTO;
     }
-
-    /*public Phone toPhone(PhoneDTO phoneDTO, Phone phone) {
-        Phone phone = new Phone();
-        //phone.setId(phoneDTO.get  q`1Id());
-        phone.setPhoneNumber(phoneDTO.getPhoneNumber());
-        phone.setType(phoneDTO.getType());
-        phone.setcontact(contactService.getcontactById(phoneDTO.getcontactId()));
-
-        return phone;
-    }*/
 }

@@ -8,7 +8,6 @@ public class ContactDTO {
     private String name;
     private String address;
     private String photo;
-    private Integer accountId;
     private List<PhoneDTO> phones;
     private List<EmailDTO> emails;
 
@@ -42,14 +41,6 @@ public class ContactDTO {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    public Integer getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
     }
 
     public List<PhoneDTO> getPhones() {
