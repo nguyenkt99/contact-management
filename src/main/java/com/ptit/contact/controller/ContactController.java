@@ -1,7 +1,6 @@
 package com.ptit.contact.controller;
 
 import com.ptit.contact.converter.ContactConverter;
-import com.ptit.contact.dto.AccountDTO;
 import com.ptit.contact.dto.ContactDTO;
 import com.ptit.contact.exception.NotFoundException;
 import com.ptit.contact.service.ContactService;
@@ -21,9 +20,9 @@ public class ContactController {
     @Autowired
     private ContactConverter contactConverter;
 
-    @GetMapping("/accounts/{id}")
-    public List<ContactDTO> findContacts(@PathVariable int id) {
-        return contactService.getContactsByAccountId(id);
+    @GetMapping
+    public List<ContactDTO> findContacts(@RequestParam int accountId) {
+        return contactService.getContactsByAccountId(accountId);
     }
 
     @GetMapping("/{id}")
