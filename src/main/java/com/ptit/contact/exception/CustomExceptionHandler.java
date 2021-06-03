@@ -20,9 +20,9 @@ public class CustomExceptionHandler {
         return new ErrorResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
     }
 
-    @ExceptionHandler(AccountAlreadyExistException.class)
+    @ExceptionHandler(AccountAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public ErrorResponse hanlderAccountAlreadyExistException(AccountAlreadyExistException ex, WebRequest req) {
+    public ErrorResponse hanlderAccountAlreadyExistException(AccountAlreadyExistsException ex, WebRequest req) {
         return new ErrorResponse(HttpStatus.FORBIDDEN, ex.getMessage());
     }
 }

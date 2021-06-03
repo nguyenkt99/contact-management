@@ -56,9 +56,12 @@ public class ContactService {
     }
 
     public ContactDTO saveContact(ContactDTO contactDTO, int accountId) {
-        String url = imageUploader.uploadImage(contactDTO.getPhoto());
-        if(url != null)
-            contactDTO.setPhoto(url);
+        if(contactDTO.getPhoto().isEmpty()) {
+            contactDTO.setPhoto("https://res.cloudinary.com/dksxh0tqy/image/upload/v1622653364/default_ixzyra.png");
+        } else {
+            contactDTO.setPhoto(imageUploader.uploadImage(contactDTO.getPhoto()));
+        }
+
         Contact contact = contactConverter.toContact(contactDTO);
         contact.setAccount(accountRepository.findById(accountId).orElse(null));
         return contactConverter.toDTO(contactRepository.save(contact));
@@ -70,10 +73,9 @@ public class ContactService {
         contact.setName(contactDTO.getName());
         contact.setAddress(contactDTO.getAddress());
         if(!contactDTO.getPhoto().isEmpty()) {
-            String url = imageUploader.uploadImage(contactDTO.getPhoto());
-            if(url != null)
-                contactDTO.setPhoto(url);
+            contact.setPhoto(imageUploader.uploadImage(contactDTO.getPhoto()));
         }
+
         List<Phone> phones = contact.getPhones();
         phones.clear();
         List<PhoneDTO> phoneDTOs = contactDTO.getPhones();

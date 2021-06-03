@@ -2,7 +2,7 @@ package com.ptit.contact.controller;
 
 import com.ptit.contact.dto.AccountDTO;
 import com.ptit.contact.entity.Account;
-import com.ptit.contact.exception.AccountAlreadyExistException;
+import com.ptit.contact.exception.AccountAlreadyExistsException;
 import com.ptit.contact.exception.LoginFailedException;
 import com.ptit.contact.service.AccountService;
 import com.ptit.contact.service.ContactService;
@@ -24,7 +24,7 @@ public class AccountController {
         Account acc = accountService.getAccountByEmail(account.getEmail());
         if(acc == null)
             return accountService.saveAccount(account);
-        throw new AccountAlreadyExistException("Email đã tồn tại");
+        throw new AccountAlreadyExistsException("Email đã tồn tại");
     }
 
     @PostMapping("/login")
